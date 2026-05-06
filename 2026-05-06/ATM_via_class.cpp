@@ -10,7 +10,20 @@ class account{
         account(string a, int b){
             balance = b;
             name = a;
-
+        }
+        deposit(double amount){
+            balance += amount;
+        }
+        withdraw(double amount){
+            if (amount > balance) {
+                cout << "Insufficient balance.\n";
+            } else {
+                balance -= amount;
+                cout << "Withdrawal successful.\n";
+            }
+        }
+        checkBalance(){
+            cout << "Current balance: " << balance << '\n';
         }
 };
 
@@ -38,14 +51,10 @@ int main() {
                 double amount;
                 cout << "Enter amount to withdraw: ";
                 cin >> amount;
-
                 if (amount <= 0) {
                     cout << "Invalid amount.\n";
-                } else if (amount > newAccount.balance) {
-                    cout << "Insufficient balance.\n";
                 } else {
-                    newAccount.balance -= amount;
-                    cout << "Withdrawal successful.\n";
+                    newAccount.withdraw(amount);
                 }
                 break;
             }
@@ -54,18 +63,18 @@ int main() {
                 double amount;
                 cout << "Enter amount to deposit: ";
                 cin >> amount;
-
                 if (amount <= 0) {
                     cout << "Invalid amount.\n";
                 } else {
-                    newAccount.balance += amount;
+                    newAccount.deposit(amount);
                     cout << "Deposit successful.\n";
                 }
+                
                 break;
             }
 
             case 3:
-                cout << "Current balance: " << newAccount.balance << '\n';
+                newAccount.checkBalance();
                 break;
 
             case 0:
