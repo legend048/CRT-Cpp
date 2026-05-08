@@ -11,10 +11,13 @@ class account{
             balance = b;
             name = a;
         }
-        deposit(double amount){
+        ~account(){
+            cout << "Account Closed!" << endl;
+        }
+        void deposit(double amount){
             balance += amount;
         }
-        withdraw(double amount){
+        void withdraw(double amount){
             if (amount > balance) {
                 cout << "Insufficient balance.\n";
             } else {
@@ -22,7 +25,7 @@ class account{
                 cout << "Withdrawal successful.\n";
             }
         }
-        checkBalance(){
+        void checkBalance(){
             cout << "Current balance: " << balance << '\n';
         }
 };
@@ -74,7 +77,7 @@ int main() {
             }
 
             case 3:
-                newAccount.checkBalance();
+                cout << "Current balance: " << newAccount.balance << '\n';
                 break;
 
             case 0:
